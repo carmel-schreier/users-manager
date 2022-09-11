@@ -1,0 +1,39 @@
+Users Manager
+Tech Stack
+
+    Node.js
+    Express.js
+    MongoDB
+    Mongoose
+    nodemon
+    React
+
+    Documentation can be found in docs folder.
+
+Prepare The Environment
+
+    Create a new MongoDB database with a cards collection.
+    Clone project in vscode: https://github.com/levworkshop/users.git
+
+Project Installation
+
+    Install nodemon globally: npm i -g nodemon and update package.json accordingly.
+    Server:
+        Add configuration file: config/dev.js containing the database connection details.
+        Install dependencies for the Server:
+        cd server
+        npm install
+    Install dependencies for React client:
+    cd client
+    npm install
+
+Run The App
+
+    Make sure mongo server is running.
+
+    Run the server - cd server, then:
+        Windows: SET DEBUG=users:* & npm start
+        MacOS/Linux: DEBUG=users:* npm start
+    Run the client:
+    cd client
+    npm start
