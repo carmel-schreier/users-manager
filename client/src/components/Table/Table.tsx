@@ -1,7 +1,13 @@
 import { Stats } from "fs";
+import { useReducer } from "react";
 import Status from "../Status/Status";
+import { IUser } from "../Users/Users";
 
-function Table() {
+interface Props {
+  users: Array<IUser>;
+}
+
+function Table(props: Props) {
   return (
     <table className="table table-hover">
       <thead>
@@ -13,20 +19,20 @@ function Table() {
         </tr>
       </thead>
       <tbody>
-        {
-          <tr className="bg-light">
-            <td>AAA</td>
+        {props.users.map((user) => (
+          <tr key={user._id} className="bg-light">
+            <td>{user.fullName}</td>
             <td>
-              <Status />
+              <Status type={user.status} />
             </td>
-            <td>uuu@gmail.com</td>
+            <td>{user.email}</td>
             <td>
               <button className="btn btn-default">
                 <i className="bi-trash3"></i>
               </button>
             </td>
           </tr>
-        }
+        ))}
       </tbody>
     </table>
   );
