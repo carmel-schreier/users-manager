@@ -40,6 +40,7 @@ class Header extends React.Component<HeaderProps, HeaderState> {
     this.setState(() => ({
       fullName: "",
       email: "",
+      status: "",
     }));
   };
 
@@ -48,6 +49,7 @@ class Header extends React.Component<HeaderProps, HeaderState> {
       status: selected,
     }));
   };
+
   render() {
     return (
       <div className="d-flex align-items-center p-3 my-4 bg-light">

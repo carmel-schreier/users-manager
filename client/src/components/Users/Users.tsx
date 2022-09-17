@@ -1,5 +1,6 @@
 import React from "react";
 import Header from "../Header/Header";
+import Message from "../Message/Message";
 import Table from "../Table/Table";
 
 export type StatusType = "active" | "expired" | "banned";
@@ -13,6 +14,7 @@ export interface IUser {
 interface UsersState {
   users: Array<IUser>;
   addSuccess: boolean;
+  deleteSuccess: boolean;
 }
 
 //interface UsersProps {}
@@ -27,6 +29,7 @@ class Users extends React.Component<{}, UsersState> {
     this.state = {
       users: [],
       addSuccess: false,
+      deleteSuccess: false,
     };
   }
   componentDidMount() {
@@ -77,7 +80,14 @@ class Users extends React.Component<{}, UsersState> {
         );
         this.setState(() => ({
           users: updated,
+          deleteSuccess: true,
         }));
+
+        setTimeout(() => {
+          this.setState(() => ({
+            deleteSuccess: false,
+          }));
+        }, 2000);
       });
   };
 
@@ -89,6 +99,12 @@ class Users extends React.Component<{}, UsersState> {
           <div className="alert alert-warning" role="alert">
             No users to display
           </div>
+        )}
+        {this.state.addSuccess && (
+          <Message type="success" children="New user was added" />
+        )}
+        {this.state.deleteSuccess && (
+          <Message type="success" children="User was deleted" />
         )}
         <Table users={this.state.users} deleteUser={this.deleteUser} />
       </div>
